@@ -8,4 +8,12 @@ RSpec.describe User, type: :model do
   it { should respond_to(:password_confirmation) }
 
   it { should be_valid }
+
+  describe "when email is not present" do
+  	it "should not be valid" do
+	  	subject.email = ""
+
+	  	expect(subject.valid?).to be_falsey
+	end
+  end
 end
