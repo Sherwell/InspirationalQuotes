@@ -95,5 +95,15 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 				end
 			end	
 		end
+
+		describe "DELETE #destroy" do 
+			before(:each) do 
+				delete :destroy, { id: subject.id }, format: :json 
+			end
+
+			it "responds with status-code 204" do 
+				expect(response.status).to eq(204)
+			end
+		end
 	end
 end
