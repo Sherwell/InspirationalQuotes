@@ -35,4 +35,16 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
 			end
 		end
 	end
+
+	describe "DELETE #destroy" do
+		before(:each) do 
+			user = create :user
+			sign_in user
+			delete :destroy, id: user.auth_token
+		end
+		
+		it "should repsond with status code 204" do 
+			expect(response.status).to eq(204)
+		end
+	end
 end
